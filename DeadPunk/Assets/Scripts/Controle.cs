@@ -28,7 +28,7 @@ public class Controle : MonoBehaviour
 
     [Header("Texto para ser o timer")]
     [SerializeField] TextMeshProUGUI timerText;
-    float tempoDecorrido;
+    public float tempoDecorrido;
 
     // Guarda a imagem selecionada
     private Sprite imagemSelecionada;
