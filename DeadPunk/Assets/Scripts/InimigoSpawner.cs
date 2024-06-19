@@ -10,18 +10,18 @@ public class InimigoSpawner : MonoBehaviour
     private float tempo;
     private Controle controleScript;
 
-    private void Start()
+    private void Awake()
     {
         tempo = controleScript.tempoDecorrido;
     }
 
     void Update()
     {
-        if (tempo < 0f)
+        if (tempo == 0)
         {
             inimigoSpawn();
-            tempo = tempoSpawn;
         }
+
     }
 
     void inimigoSpawn()
