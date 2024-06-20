@@ -28,7 +28,10 @@ public class Controle : MonoBehaviour
 
     [Header("Texto para ser o timer")]
     [SerializeField] TextMeshProUGUI timerText;
+    
     public float tempoDecorrido;
+    public int minutos;
+    public int segundos;
 
     // Guarda a imagem selecionada
     private Sprite imagemSelecionada;
@@ -77,8 +80,8 @@ public class Controle : MonoBehaviour
     {
         //Pegando o tempo e transformando ele em segundos e minutos
         tempoDecorrido += Time.deltaTime;
-        int minutos = Mathf.FloorToInt(tempoDecorrido / 60);
-        int segundos = Mathf.FloorToInt(tempoDecorrido % 60);
+        minutos = Mathf.FloorToInt(tempoDecorrido / 60);
+        segundos = Mathf.FloorToInt(tempoDecorrido % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
 

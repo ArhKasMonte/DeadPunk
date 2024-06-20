@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
+    [Header("Lugar de destino para o inimigo")]
     [SerializeField] Transform baseDestino;
-    GameObject baseGameobject;
+
+    [Header("Velocidade do inimigo")]
     [SerializeField] float velocidade;
 
-    Rigidbody2D rigidbody2d;
+    [Header("Dano do inimigo")]
+    [SerializeField] int dano = 0;
 
+    Rigidbody2D rigidbody2d;
+    GameObject baseGameobject;
+    Base baseDano;
 
     private void Awake()
     {
@@ -28,11 +34,17 @@ public class Inimigo : MonoBehaviour
         if (collision.gameObject == baseGameobject)
         {
             Dano();
+            Destroy(this.gameObject);
         }
     }
 
     void Dano()
     {
-        Debug.Log("Atacou a base");
+        if (baseDano == null)
+        {
+            baseDano = baseGameobject.GetComponent<Base>();
+        }
+
+        baseDano.LevarDano(dano);
     }
 }

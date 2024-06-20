@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Vida da base")]
+    [SerializeField] int vidaMaxima = 100;
+    [SerializeField] int vidaAtual = 100;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Controle da barra de vida")]
+    [SerializeField] StatusBarra vidaBarra;
+
+    public void LevarDano(int dano)
     {
-        
+        vidaAtual -= dano;
+
+        if (vidaAtual <= 0)
+        {
+            Debug.Log("Você morreu");
+        }
+        vidaBarra.DefinirStatus(vidaAtual, vidaMaxima);
     }
 }
